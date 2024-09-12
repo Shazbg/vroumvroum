@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'public/style.css' %}">
+
+<h1>Détails de la Voiture</h1>
+
+<ul>
+    <li>Immatriculation : {{ voiture.immat }}</li>
+    <li>Marque : {{ voiture.marque }}</li>
+    <li>Modèle : {{ voiture.modele }}</li>
+    <li>Couleur : {{ voiture.color }}</li>
+    <li>Garage : <a href="{% url 'details_garage' voiture.garage.id %}">{{ voiture.garage.nom }}</a></li>
+    {% if voiture.photo %}
+        
+            <img src="{{ voiture.photo.url }}" alt="Image de {{ voiture.marque }} {{ voiture.modele }}" width="300">
+        
+    {% else %}
+        Aucune image disponible.
+    {% endif %}
+</ul>
+
+<a href="{% url 'index' %}">Retour à la liste des voitures.</a>
