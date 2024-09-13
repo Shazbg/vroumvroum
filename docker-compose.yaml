@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile.front
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
+      - ./public:/app
     env_file:
       - .env
     depends_on:
@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile.api
     command: python manage.py runserver 0.0.0.0:8001
     volumes:
-      - .:/app
+      - ./api/:/app
     env_file:
       - .env
     depends_on:
