@@ -10,3 +10,4 @@ class CleAdmin(admin.ModelAdmin):
     form = CleForm
 
 admin.site.register(Cle, CleAdmin)
+admin.site.register(Reservation)

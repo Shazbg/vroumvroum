@@ -9,6 +9,14 @@
     <li>Modèle : {{ voiture.modele }}</li>
     <li>Couleur : {{ voiture.color }}</li>
     <li>Garage : <a href="{% url 'details_garage' voiture.garage.id %}">{{ voiture.garage.nom }}</a></li>
+    <li></li>
+        Statut : 
+        {% if reservation_active %}
+            <span style="color: red;">Réservée</span>
+        {% else %}
+            <span style="color: green;">Disponible</span>
+        {% endif %}
+    </li>
     {% if voiture.photo %}
         
             <img src="{{ voiture.photo.url }}" alt="Image de {{ voiture.marque }} {{ voiture.modele }}" width="300">

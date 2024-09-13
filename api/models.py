@@ -23,10 +23,18 @@ class Voiture(models.Model):
         return self.immat
 
 class Reservation(models.Model):
+
+    STATUT_CHOICES = [
+        ('en_attente', 'En attente'),
+        ('confirmee', 'Confirmée'),
+        ('annulee', 'Annulée'),
+    ]
     voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     date_debut = models.DateField()
     date_fin = models.DateField()
+    statut = models.CharField(max_length=10, choices=STATUT_CHOICES, default='en_attente')
+
 
     def __str__(self):
         return f"Réservation de {self.voiture.immat} par {self.user} du {self.date_debut} au {self.date_fin}"

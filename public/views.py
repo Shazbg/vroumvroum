@@ -17,8 +17,11 @@ def index(request):
 
 def details_car(request,voiture_id):
    voiture =  get_object_or_404(Voiture,id=voiture_id)
-   context = {"voiture": voiture}
+   context = {"voiture": voiture, 'reservation_active': reservation_active}
+   reservation_active = Reservation.objects.filter(voiture=voiture, statut='confirmee').exists()
    return render(request,"public/details_car.html",context)
+
+
 
 def details_garage(request,garage_id):
     garage = get_object_or_404(Garage,id=garage_id)
