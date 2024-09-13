@@ -1,8 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-
-
+from django.utils import timezone
 class Garage(models.Model):
     nom = models.CharField(max_length=30)
     adresse = models.CharField(max_length=80)
@@ -34,6 +33,14 @@ class Reservation(models.Model):
     date_debut = models.DateField()
     date_fin = models.DateField()
     statut = models.CharField(max_length=10, choices=STATUT_CHOICES, default='en_attente')
+
+
+    def is_active(self):
+        dt_now = timezone.now()
+        d_now = dt_now.date()
+        return self.date_debut <= d_now < self.date_fin
+    
+    
 
 
     def __str__(self):

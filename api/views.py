@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
 from django.http import JsonResponse
-from .models import Garage,Cle,Voiture
+from .models import Garage,Cle,Voiture, Reservation
+from django.utils import timezone
+
+now = timezone.now().date()
 
 def garage_list(request):
     garages = Garage.objects.all()
@@ -13,9 +16,6 @@ def cle_list(request):
     data = [
         {
             'id': cle.id,
-            'etat_pret': cle.etat_pret,
-            'date_pret': cle.date_pret,
-            'date_rendu': cle.date_rendu,
             'voiture': {
                 'id': cle.voiture.id,
                 'immat': cle.voiture.immat,
@@ -37,9 +37,49 @@ def voiture_list(request):
             'color': voiture.color,
             'marque': voiture.marque,
             'modele': voiture.modele,
-            'photo_url': voiture.photo.url,
-            'garage': {'id': voiture.garage.id, 'nom': voiture.garage.nom, 'adresse': voiture.garage.adresse, 'code_postal': voiture.garage.code_postal}
+            'photo_url': voiture.photo.url if voiture.photo else None,  # Gérer les cas sans photo
+            'garage': {
+                'id': voiture.garage.id,
+                'nom': voiture.garage.nom,
+                'adresse': voiture.garage.adresse,
+                'code_postal': voiture.garage.code_postal
+            },
+            'reservations': [
+                {
+                    'id': reservation.id,
+                    'date_debut': reservation.date_debut.strftime('%d/%m/%Y'),
+                    'date_fin': reservation.date_fin.strftime('%d/%m/%Y'),
+                }
+                for reservation in Reservation.objects.filter(voiture=voiture, statut='confirmee', date_fin__gte=now)
+            ]
         }
         for voiture in voitures
+    ]
+    return JsonResponse(data, safe=False)
+
+def reservation_list(request):
+    # Obtenir la date actuelle pour filtrer les réservations futures
+    now = timezone.now().date()
+
+    reservations = Reservation.objects.filter(date_fin__gte=now)
+    data = [
+        {
+            'id': reservation.id,
+            'date_debut': reservation.date_debut.strftime('%d/%m/%Y'),
+            'date_fin': reservation.date_fin.strftime('%d/%m/%Y'),
+            'voiture': {
+                'id': reservation.voiture.id,
+                'immat': reservation.voiture.immat,
+                'marque': reservation.voiture.marque,
+                'modele': reservation.voiture.modele,
+                'color': reservation.voiture.color,
+                'photo_url': reservation.voiture.photo.url if reservation.voiture.photo else None
+            },
+            'user': {
+                'id': reservation.user.id,
+                'username': reservation.user.username
+            }
+        }
+        for reservation in reservations
     ]
     return JsonResponse(data, safe=False)

@@ -5,9 +5,11 @@ from django.contrib import messages
 from api.models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 # Create your views here.
 
+now = timezone.now().date()
 
 def index(request):
     voiture_list = Voiture.objects.order_by("immat")
@@ -17,8 +19,8 @@ def index(request):
 
 def details_car(request,voiture_id):
    voiture =  get_object_or_404(Voiture,id=voiture_id)
-   reservation_active = Reservation.objects.filter(voiture=voiture, statut='confirmee').exists()
-   context = {"voiture": voiture, 'reservation_active': reservation_active}
+   reservations = Reservation.objects.filter(voiture=voiture, statut='confirmee', date_fin__gte=now).order_by('date_debut')
+   context = {"voiture": voiture, 'reservations': reservations }
    return render(request,"public/details_car.html",context)
 
 
@@ -59,7 +61,7 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
-
+@login_required
 def reservation_create(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
