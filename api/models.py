@@ -17,11 +17,6 @@ class Voiture(models.Model):
     modele = models.CharField(max_length=30)
     garage = models.ForeignKey(Garage,on_delete=models.CASCADE)
     photo = models.ImageField(upload_to="cars")
-    
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        image = Image.open(self.photo.path)
-        image.save(self.photo.path, quality=20, optimize=True)
 
     def __str__(self):
         return self.immat
