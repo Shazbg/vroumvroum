@@ -76,3 +76,19 @@ img {
     display: block;
     border-radius: 8px;
 }
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+.btn {
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #0056b3;
+}

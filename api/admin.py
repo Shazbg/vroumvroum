@@ -1,8 +1,12 @@
 from django.contrib import admin
-
-# Register your models here.
+from .forms import CleForm
 from .models import *
 
-admin.site.register(Cle)
+
 admin.site.register(Garage)
 admin.site.register(Voiture)
+
+class CleAdmin(admin.ModelAdmin):
+    form = CleForm
+
+admin.site.register(Cle, CleAdmin)
