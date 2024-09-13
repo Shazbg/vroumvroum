@@ -2,7 +2,10 @@ from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
-from api.models import Voiture,Garage
+from api.models import *
+from .forms import *
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -52,4 +55,22 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
+
+
+def reservation_create(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.user = request.user  # Associe la réservation à l'utilisateur connecté (si nécessaire)
+            reservation.save()
+            messages.success(request, "Votre réservation a été effectuée avec succès.")
+            return redirect('index')  # Redirige vers la page d'accueil ou une page de confirmation
+        else:
+            messages.error(request, "Erreur lors de la réservation. Veuillez vérifier les informations.")
+    else:
+        form = ReservationForm()
+
+    context = {"form": form, "voitures": Voiture.objects.all(),}
+    return render(request, 'public/reservation.html', context)
 

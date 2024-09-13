@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
 
 class Garage(models.Model):
@@ -21,7 +22,30 @@ class Voiture(models.Model):
     def __str__(self):
         return self.immat
 
+class Reservation(models.Model):
+    voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date_debut = models.DateField()
+    date_fin = models.DateField()
+
+    def __str__(self):
+        return f"Réservation de {self.voiture.immat} par {self.user} du {self.date_debut} au {self.date_fin}"
     
+    def clean(self):
+        # Vérifier que la date de début est avant la date de fin
+        if self.date_debut >= self.date_fin:
+            raise ValidationError('La date de début doit être avant la date de fin.')
+
+        # Vérifier la disponibilité de la voiture pour les dates choisies
+        reservations = Reservation.objects.filter(voiture=self.voiture, statut='confirmee')
+        for reservation in reservations:
+            if (self.date_debut < reservation.date_fin) and (self.date_fin > reservation.date_debut):
+                raise ValidationError('La voiture est déjà réservée pour cette période.')
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+
 
 class Cle(models.Model):
     voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
