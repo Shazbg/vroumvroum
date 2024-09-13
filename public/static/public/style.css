@@ -24,8 +24,7 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 20px 0;
-    width: 80%;
-    max-width: 600px;
+    width: 60%;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -71,7 +70,7 @@ a.return-link:hover {
 
 /* Image styling */
 img {
-    width: 100%; /* L'image prend toute la largeur de son conteneur */
+    width: 50%; /* L'image prend toute la largeur de son conteneur */
     max-width: 1200px; /* Limite de taille pour les très grands écrans */
     margin: 20px auto;
     display: block;
