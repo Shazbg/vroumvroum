@@ -71,15 +71,19 @@ a.return-link:hover {
 
 /* Image styling */
 img {
-    max-width: 90%; /* Utilise 90% de la largeur de son conteneur */
+    width: 100%; /* L'image prend toute la largeur de son conteneur */
+    max-width: 1200px; /* Limite de taille pour les très grands écrans */
     margin: 20px auto;
     display: block;
     border-radius: 8px;
+    height: auto; /* Maintient les proportions */
 }
+
 .button-container {
     margin-top: 20px;
     text-align: center;
 }
+
 .btn {
     padding: 10px 20px;
     color: white;
@@ -89,6 +93,7 @@ img {
     cursor: pointer;
     text-decoration: none;
 }
+
 .btn:hover {
     background-color: #0056b3;
 }
