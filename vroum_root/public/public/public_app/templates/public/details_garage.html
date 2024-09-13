@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'public/style.css' %}">
+
+<h1>Détails du Garage</h1>
+
+    <ul>
+        <li>Nom : {{ garage.nom }}</li>
+        <li>Adresse : {{ garage.adresse }}</li>
+        <li>Code Postal : {{ garage.code_postal }}</li>
+    </ul>
+
+    <h2>Liste des Voitures dans ce Garage</h2>
+    <ul>
+        {% for voiture in garage.voiture_set.all %}
+            <li>
+                <strong>Immatriculation : </strong><a href="{% url 'details_car' voiture.id %}"> {{ voiture.immat }}<br></a>
+                <strong>Marque :</strong> {{ voiture.marque }}<br>
+                <strong>Modèle :</strong> {{ voiture.modele }}<br>
+                <strong>Couleur :</strong> {{ voiture.color }}
+            </li>
+        {% empty %}
+            <li>Aucune voiture disponible dans ce garage.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'index' %}">Retour à la liste des garages.</a>

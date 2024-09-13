@@ -1,0 +1,98 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Centrer les titres */
+h1, h2 {
+    text-align: center;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les listes */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 60%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les éléments de liste */
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Lien pour les détails du garage */
+a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Bouton de retour */
+a.return-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+a.return-link:hover {
+    background-color: #357ABD;
+}
+
+/* Image styling */
+img {
+    width: 50%; /* L'image prend toute la largeur de son conteneur */
+    max-width: 1200px; /* Limite de taille pour les très grands écrans */
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+    height: auto; /* Maintient les proportions */
+}
+
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
