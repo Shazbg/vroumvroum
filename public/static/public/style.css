@@ -71,8 +71,8 @@ a.return-link:hover {
 
 /* Image styling */
 img {
-    max-width: 700px;
-    margin: 10px auto;
+    max-width: 90%; /* Utilise 90% de la largeur de son conteneur */
+    margin: 20px auto;
     display: block;
     border-radius: 8px;
 }
