@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'public/style.css' %}">
+
+<h2>Connexion</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Se connecter</button>
+</form>
+
+<a href="{% url 'register' %}">Créer un nouveau compte</a>
+<a href="{% url 'index' %}">Revenir à la page d'accueil</a>
