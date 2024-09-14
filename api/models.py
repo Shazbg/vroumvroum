@@ -8,6 +8,9 @@ class Garage(models.Model):
     code_postal = models.IntegerField()
     def __str__(self):
         return self.nom
+    
+    class Meta:
+        app_label="api"
 
     
 class Voiture(models.Model):
@@ -20,6 +23,9 @@ class Voiture(models.Model):
 
     def __str__(self):
         return self.immat
+    
+    class Meta:
+        app_label="api"
 
 class Reservation(models.Model):
 
@@ -61,12 +67,18 @@ class Reservation(models.Model):
         self.clean()
         super().save(*args, **kwargs)
 
+    class Meta:
+        app_label="api"
+
 
 class Cle(models.Model):
     voiture = models.ForeignKey(Voiture, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"clé de {self.voiture}"
+    
+    class Meta:
+        app_label="api"
 
 
 
