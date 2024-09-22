@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.front
-    #command: python manage.py runserver 0.0.0.0:8000 --settings=voiture.settings.public
     volumes:
       - .:/app
     env_file:
@@ -15,7 +14,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
-    #command: python manage.py runserver 0.0.0.0:8001 --settings=voiture.settings.api
     volumes:
       - .:/app
     env_file:
@@ -32,7 +30,9 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - postgres_data_v6:/var/lib/postgresql/data
+      - ./export.pgsql:/export.pgsql
+      - ./load-dbdata.sh:/load-dbdata.sh
 
   nginx:
     image: nginx:latest
@@ -44,8 +44,8 @@ services:
       - front
       - api
 
-# volumes:
-#   postgres_data:
+volumes:
+   postgres_data_v6:
 
   
   

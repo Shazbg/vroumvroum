@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-3lp9ujadmm)g!f%2xgi&7_1f1m#wl*84nj#3twjyj$-ry&)5#$"
+SECRET_KEY = "django-insecure-56rn72$s(c3fh08l%@@u+=ivapxwd%yq21zv4-6ar@s$h8h11k"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,6 +74,13 @@ WSGI_APPLICATION = "voiture.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -122,13 +129,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

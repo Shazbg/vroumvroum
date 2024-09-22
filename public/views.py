@@ -37,7 +37,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Votre compte a été créé avec succès.")
-            return redirect('login')
+            return redirect('user_login')
     else:
         form = UserCreationForm()
     return render(request, 'public/register.html', {'form': form})
