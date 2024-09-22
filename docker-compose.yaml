@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.front
-    command: python manage.py runserver 0.0.0.0:8000 --settings=voiture.settings.public
+    #command: python manage.py runserver 0.0.0.0:8000 --settings=voiture.settings.public
     volumes:
       - .:/app
     env_file:
@@ -15,7 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
-    command: python manage.py runserver 0.0.0.0:8001 --settings=voiture.settings.api
+    #command: python manage.py runserver 0.0.0.0:8001 --settings=voiture.settings.api
     volumes:
       - .:/app
     env_file:
