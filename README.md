@@ -67,7 +67,7 @@ Pour revenir à un site vierge si besoin, alors il suffit de supprimer le volume
 sudo docker volume rm **nomduvolume**
 ```
 ## Structure du projet
-
+```
 ├── Dockerfile.api
 ├── Dockerfile.front
 ├── README.md
@@ -113,3 +113,4 @@ sudo docker volume rm **nomduvolume**
     ├── urls-api.py
     ├── urls-public.py
     └── wsgi.py
+```
