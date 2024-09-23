@@ -159,28 +159,57 @@ La commande ```migrate``` va appliquer les fichiers de migrations crées précé
 ### Fonctionnement de Docker
 
 - Expliquez l'effet et la syntaxe de ces commandes, communément vues dans des fichiers `Dockerfile` : `FROM`, `RUN`, `WORKDIR`, `EXPOSE`, `CMD`.
+
+Toutes ces commandes utilisées dans un fichier Dockerfile servent à construire une image Docker. 
+
+La commannde ```FROM``` sert à définir l'image de base sur laquelle l'image Docker sera construite, on choisit généralement une image minimaliste afin de rajouter seulement les modules nécessaires. 
+
+La commande ```RUN``` définit la commande exécutée lors de la création du container Docker, elle est généralement utilisée pour installer des paquets avec ```RUN pip install -r requirements.txt```par exemple.
+
+La commande ```WORKDIR``` déclare le répertoire de travail, toutes les instructions passées à la suite seront exécutées à partir de ce répertoire.
+
+La commande ```EXPOSE``` indique le port sur lequel le container va écouter les connexions entrantes, sans le configurer.
+
+La commande ```CMD``` spécifie la commande à lancer au démarrage du container (différent de ```RUN``` qui s'exécute à la création). Dans notre cas, elle sert à lancer le serveur Django.
+  
 - Dans la définition d'un service dans le fichier `docker-compose.yml`, expliquez l'effet des mentions :
 
-    -   ```
-        ports:
-            - "80:80"
-        ```
-    -   ```
-        build: 
-            context: .
-            dockerfile: Dockerfile.api
-        ```
-    -   ```
-        depends_on:
-            - web
-            - api
-        ```
-    -   ```
-        environment:
-            POSTGRES_DB: ${POSTGRES_DB}
-            POSTGRES_USER: ${POSTGRES_USER}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        ```
+
+```
+ports:
+    - 80:80
+```
+Cette section sert à lier le port 80 de l'hôte au port 80 du container Docker.
+
+```
+build: 
+    context: .
+    dockerfile: Dockerfile.api
+```
+Cela signifie que l'image de ce container Docker doit être construire à partir du fichier ```Dockerfile.api``` situé dans le répertoire courant.
+
+```
+depends_on:
+    - web
+    - api
+```
+Ces lignes permettent d'établir un ordre de lancement des containers, ici on peut imaginer que cette configuration peut être inclue dans le container du reverse proxy Nginx qui ne va pas démarrer sans que les containers ```web```et ```api``` aient démarrés.
+
+```
+environment:
+    POSTGRES_DB: ${POSTGRES_DB}
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+```
+Ces lignes définissent les variables d'environnement pour le container ```postgres```. les valeurs de ces variables sont disponibles via un fichier .env contenant toutes les variables nécessaires dans ce ```docker-compose.yaml```
+
+
+
+
+
+
+
+
 
 - Citez une méthode pour définir des variables d'environnement dans un conteneur.
 - Dans un même réseau Docker, nous disposons d'un conteneur `nginx` (utilisant l'image `nginx:latest`) et d'un conteneur `web` (utilisant une image contenant un projet web Django, ayant la commande `python manage.py runserver 0.0.0.0:8000` de lancée au démarrage du conteneur). Comment adresser le serveur web tournant dans le conteneur `web` depuis le conteneur `nginx`, sans utiliser les adresses IP des conteneurs ?
