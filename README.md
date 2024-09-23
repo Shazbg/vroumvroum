@@ -47,18 +47,22 @@ sudo docker compose up --build
 ```
 Le site sera ainsi accessible aux adresses décrites juste au-dessus !
 
-Ensuite :
+## Ajout de données
+
+Le site fourni sera entièrement vierge et ne contiendra aucune voiture, garage, etc… Il est possible grâce à un petit script d'ajouter des données automatiquement afin de donner vie au site et de pouvoir tester toutes les fonctionnalités convenablement !
+
+Pour cela, il faut lancer la commande suivante :
+````
+sudo docker exec -it vroumvroum-db-1 bash
+````
+Puis :
+````
+./load-dbdata.sh
+`````
+Ce script va se charger de restorer la base de données postgresSQL avec des données sauvegardées dans un fichier **export.pgsql**.
+Il est très fort possible que des erreurs s'affichent lors du lancement du script, cela est attendu et normal, cela est causé par le fait que la plupart des données existent déjà dans la table utilisée par Django.
+
+Pour revenir à un site vierge si besoin, alors il suffit de supprimer le volume Docker bindé au container postgresSQL avec la commande suivante :
 ```
-pyenv install 3.12
+sudo docker volume rm **nomduvolume**
 ```
-3. Installer les dépendances utiles
-```
-pip install django psycopg2-binary
-```
-4. Créer le projet Django & vérifier qu'il tourne correctement
-```
-cd django-site
-django-admin startproject [nom-de-votre-projet] <-- A REMPLACER
-python manage.py runserver
-```
-Allez sur 127.0.0.1:8000 sur un navigateur. Si une page "Congratulations!" s'affiche, c'est que tout fonctionne bien !
