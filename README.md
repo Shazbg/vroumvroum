@@ -121,7 +121,18 @@ sudo docker volume rm **nomduvolume**
 
 - Vous disposez d'un projet Django dans lequel une application `public` a été créée. Décrivez la suite de requêtes et d'exécutions permettant l'affichage d'une page HTML `index.html` à l'URL global `/` via une application `public`, ne nécessitant pas de contexte de données. Vous décrirez la position exacte dans l'arborescence des répertoires des différents fichiers utiles à cette exécution.
 
-Lorsqu'un utilist
+Lorsqu'un utilisateur souhaite accéder à l'URL global '/', Django va réaliser tout un tas d'étapes afin de rendre la page sur le navigateur de l'utilisateur. 
+
+- Le navigateur envoit une requête HTTP GET au serveur Web, dans notre cas Django.
+- Le serveur web Django reçoit la requête et va l'analyser pour déterminer la vue à exécuter.
+- Django fait appel au fichier ```urls-public.py``` (dans notre cas) car on appelle l'application **public**
+- Ce même fichier va chercher les URLS spécifiques de l'application **public** dans ```public/urls.py```
+- Une fois qu'il a trouvé la vue correspondante à l'URL '/', il lui fait appel dans ```public/views.py```
+- La vue **index** compile et prépare la réponse HTTP avec la fonction render() à l'aide du template ```public/template/public/index.html```
+- Le template va aussi se servir des fichiers statiques nécessaires, ici le fichier ```public/static/public/style.css``` est chargé.
+- Une fois que le template est prêt à être servi au navigateur, la réponse HTTP est générée et envoyée puis affichée.
+ 
+
 
 - Dans quelle(s) section(s) de quel(s) fichier(s) peut-on configurer la base de données que l'on souhaite utiliser pour un projet Django ?
 - Dans quel(s) fichier(s) peut-on configurer le fichier de paramètres que l'on souhaite faire utiliser par le projet Django ? Si plusieurs fichers sont à mentionner, expliquez le rôle de chaque fichier.
