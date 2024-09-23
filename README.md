@@ -52,13 +52,13 @@ Le site sera ainsi accessible aux adresses décrites juste au-dessus !
 Le site fourni sera entièrement vierge et ne contiendra aucune voiture, garage, etc… Il est possible grâce à un petit script d'ajouter des données automatiquement afin de donner vie au site et de pouvoir tester toutes les fonctionnalités convenablement !
 
 Pour cela, il faut lancer la commande suivante :
-````
+```
 sudo docker exec -it vroumvroum-db-1 bash
-````
+```
 Puis :
-````
+```
 ./load-dbdata.sh
-`````
+```
 Ce script va se charger de restorer la base de données postgresSQL avec des données sauvegardées dans un fichier **export.pgsql**.
 Il est très fort possible que des erreurs s'affichent lors du lancement du script, cela est attendu et normal, cela est causé par le fait que la plupart des données existent déjà dans la table utilisée par Django.
 
@@ -66,3 +66,50 @@ Pour revenir à un site vierge si besoin, alors il suffit de supprimer le volume
 ```
 sudo docker volume rm **nomduvolume**
 ```
+## Structure du projet
+
+├── Dockerfile.api
+├── Dockerfile.front
+├── README.md
+├── api
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations
+│   │   └── 0001_initial.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── api.sh
+├── database-schema.png
+├── docker-compose.yaml
+├── export.pgsql
+├── load-dbdata.sh
+├── manage.py
+├── nginx.conf
+├── public
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── migrations
+│   ├── models.py
+│   ├── static
+│   │   └── public
+│   ├── templates
+│   │   └── public
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── requirements.txt
+└── voiture
+    ├── asgi.py
+    ├── media
+    │   └── cars
+    ├── settings
+    │   ├── api.py
+    │   ├── base.py
+    │   └── public.py
+    ├── urls-api.py
+    ├── urls-public.py
+    └── wsgi.py
