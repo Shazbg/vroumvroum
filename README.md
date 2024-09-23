@@ -135,8 +135,26 @@ Lorsqu'un utilisateur souhaite accéder à l'URL global '/', Django va réaliser
 
 
 - Dans quelle(s) section(s) de quel(s) fichier(s) peut-on configurer la base de données que l'on souhaite utiliser pour un projet Django ?
+
+Dans Django, la configuration de la base de données se fait dans la section **DATABASES** du fichier ```settings/base.py``` (dans notre cas, sinon ```settings.py```)
+
 - Dans quel(s) fichier(s) peut-on configurer le fichier de paramètres que l'on souhaite faire utiliser par le projet Django ? Si plusieurs fichers sont à mentionner, expliquez le rôle de chaque fichier.
+
+Il y a plusieurs possibilités pour définir le fichier de paramètres à utiliser. On peut passer par la variable ```os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")```du fichier ```manage.py```. Ici on définit le fichier par défaut.
+
+Le fichier ```manage.py``` d'un projet Django est essentiel pour créer des applications, lancer le serveur web, créer les migrations pour les modifications de modèles.
+
+Sinon, on peut expliciter le fichier de paramètres à utiliser dans les arguments de lancement du serveur Django que l'on va passer dans le Dockerfile, dans un script ou bien dans le fichier ```docker-compose.yaml``` : 
+```python manage.py runserver --settings=voiture.settings.public (--settings=voiture.settings.api)```
+
+
 - Nous nous plaçons à la racine de votre projet Django. Quel effet a l'exécution `python manage.py makemigrations` ? Et l'exécution `python manage.py migrate` ? Quel(s) fichier(s) sont mis en oeuvre pendant ces exécutions ?
+
+La commande ```makemigrations``` sert à détecter les changements dans les modèles (définis dans le fichier ```api/models.py```) et créer les fichiers de migrations correspondants. Ces fichiers contiennt les instructions nécessaires pour appliquer les changements dans la structure de la base de données. Django va donc créer des fichiers de migrations dans le dossier ```public/migrations```. Chaque modification et lancement de la commande ```makemigrations``` va générer des fichiers de migrations pour chaque application impliquée. Ces fichiers portent des noms comme 0001_initial.py, 0002_auto_20240101.py, etc. Ces fichiers définissent les opérations à effectuer sur la base de données (création de tables, ajout de colonnes, modifications de types, etc.).
+
+La commande ```migrate``` va appliquer les fichiers de migrations crées précédemment avec la commande ```makemigrations```. Django lit tous les fichiers de migration présents dans les dossiers ```migrations``` des applications. Il applique les migrations non encore exécutées à la base de données. La table ```django_migrations``` est mise à jour pour noter quelles migrations ont été exécutées.
+
+(il peut être nécessaire de spécifier le fichier de paramètres à utiliser si les applications sont séparées dans des containers Docker)
 
 ### Fonctionnement de Docker
 
