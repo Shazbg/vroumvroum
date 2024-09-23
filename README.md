@@ -68,19 +68,43 @@ sudo docker volume rm **nomduvolume**
 ```
 ## Structure du projet
 ```
-├── Dockerfile.api
-├── Dockerfile.front
-├── README.md
 ├── api
+│   ├── migrations
+│   │   └── 0001_initial.py
 │   ├── admin.py
 │   ├── apps.py
 │   ├── forms.py
-│   ├── migrations
-│   │   └── 0001_initial.py
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
+├── public
+│   ├── migrations
+│   ├── static
+│   │   └── public
+│   ├── templates
+│   │   └── public
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── voiture
+│   ├── media
+│   │   └── cars
+│   ├── settings
+│   │   ├── api.py
+│   │   ├── base.py
+│   │   └── public.py
+│   ├── asgi.py
+│   ├── urls-api.py
+│   ├── urls-public.py
+│   └── wsgi.py
+├── Dockerfile.api
+├── Dockerfile.front
+├── README.md
 ├── api.sh
 ├── database-schema.png
 ├── docker-compose.yaml
@@ -88,31 +112,7 @@ sudo docker volume rm **nomduvolume**
 ├── load-dbdata.sh
 ├── manage.py
 ├── nginx.conf
-├── public
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── migrations
-│   ├── models.py
-│   ├── static
-│   │   └── public
-│   ├── templates
-│   │   └── public
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── requirements.txt
-└── voiture
-    ├── asgi.py
-    ├── media
-    │   └── cars
-    ├── settings
-    │   ├── api.py
-    │   ├── base.py
-    │   └── public.py
-    ├── urls-api.py
-    ├── urls-public.py
-    └── wsgi.py
+└── requirements.txt
 ```
 
 ## Réponses aux questions
