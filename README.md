@@ -33,7 +33,7 @@ L'installation suivante fonctionne avec Docker et Docker-Compose
 
 1. Dézippez l'archive du projet
 ```
-tar -xvf **nomarchive**
+tar -xvf **CSC8567 - Django et Docker - Shazir Sheik.tar.gz**
 ```
    
 2. Lancer la commande suivante
