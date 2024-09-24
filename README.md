@@ -33,7 +33,7 @@ L'installation suivante fonctionne avec Docker et Docker-Compose
 
 1. Dézippez l'archive du projet
 ```
-tar -xvf CSC8567 - Django et Docker - Shazir Sheik.tar.gz
+tar xvf CSC8567 - Django et Docker - Shazir Sheik.tar.gz
 ```
    
 2. Lancer la commande suivante
@@ -48,7 +48,7 @@ Le site fourni sera entièrement vierge et ne contiendra aucune voiture, garage,
 
 Pour cela, il faut lancer la commande suivante :
 ```
-sudo docker exec -it vroumvroum-db-1 bash
+sudo docker exec -it django-db bash
 ```
 Puis :
 ```
@@ -59,7 +59,7 @@ Il est très fort possible que des erreurs s'affichent lors du lancement du scri
 
 Pour revenir à un site vierge si besoin, alors il suffit de supprimer le volume Docker bindé au container postgresSQL avec la commande suivante :
 ```
-sudo docker volume rm **postgres_data_v6**
+sudo docker volume rm {dossier_courant}postgres_data_v6
 ```
 ## Structure du projet
 ```
