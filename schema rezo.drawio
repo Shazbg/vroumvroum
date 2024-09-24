@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15" version="24.7.16">
+  <diagram name="Page-1" id="iy9grj9UOCgxZ0pk9aJg">
+    <mxGraphModel dx="1026" dy="645" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-1" value="" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="500" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-2" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=none;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/docker-128.png;" vertex="1" parent="1">
+          <mxGeometry x="90" y="120" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-3" value="Réseau virtuel Docker" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="88" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-4" value="Reverse Proxy&lt;div&gt;NGINX&lt;/div&gt;&lt;div&gt;port 80&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_node.svg;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="480" y="260" width="50" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;curved=1;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="7Q9d-WgcajSIySMRXAa1-5" target="7Q9d-WgcajSIySMRXAa1-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="225" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;curved=1;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="7Q9d-WgcajSIySMRXAa1-5" target="7Q9d-WgcajSIySMRXAa1-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-5" value="PostgreSQL&lt;div&gt;db&lt;/div&gt;&lt;div&gt;port 5432&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_node.svg;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="120" y="260" width="50" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="7Q9d-WgcajSIySMRXAa1-7" target="7Q9d-WgcajSIySMRXAa1-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-7" value="Django&lt;div&gt;front&lt;/div&gt;&lt;div&gt;port 8000&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_node.svg;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="340" width="50" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="7Q9d-WgcajSIySMRXAa1-8" target="7Q9d-WgcajSIySMRXAa1-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="285" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-8" value="Django&lt;div&gt;api&lt;/div&gt;&lt;div&gt;port 8001&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_node.svg;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="190" width="50" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.08;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="7Q9d-WgcajSIySMRXAa1-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="714" y="284.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-16" value="&lt;div style=&quot;&quot;&gt;&lt;b&gt;port 80 exposé sur l&#39;hôte&lt;/b&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;" vertex="1" connectable="0" parent="7Q9d-WgcajSIySMRXAa1-15">
+          <mxGeometry x="0.0813" y="1" relative="1" as="geometry">
+            <mxPoint x="1" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7Q9d-WgcajSIySMRXAa1-17" value="Machine hôte&lt;div&gt;localhost:80&lt;/div&gt;" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Personal_Computer.svg;" vertex="1" parent="1">
+          <mxGeometry x="710" y="253.6" width="45.6" height="61.800000000000004" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
