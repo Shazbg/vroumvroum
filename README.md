@@ -112,7 +112,9 @@ sudo docker volume rm **nomduvolume**
 ├── load-dbdata.sh
 ├── manage.py
 ├── nginx.conf
-└── requirements.txt
+├── requirements.txt
+├── schema rezo.drawio
+└── schema rezo.png
 ```
 ## Schéma de l'infrastructure réseau
 
