@@ -116,7 +116,7 @@ sudo docker volume rm **nomduvolume**
 ```
 ## Schéma de l'infrastructure réseau
 
-<img src="https://github.com/Shazbg/vroumvroum/blob/v6/schema%20rezo.png?raw=true" width=50% alt="Schéma de l'infrastructure réseau">
+<img src="https://github.com/Shazbg/vroumvroum/blob/v6/schema%20rezo.png?raw=true"  alt="Schéma de l'infrastructure réseau">
 
 ## Réponses aux questions
 
