@@ -117,7 +117,7 @@ sudo docker volume rm {dossier_courant}postgres_data_v6
 
 ## Schéma de la base de données
 
-<img src="https://github.com/Shazbg/vroumvroum/blob/v6/database-schema.png?raw=true"  alt="Schéma de la base de données>
+<img src="https://github.com/Shazbg/vroumvroum/blob/v6/database-schema.png?raw=true"  alt="Schéma de la base de données">
 
 ## Réponses aux questions
 
