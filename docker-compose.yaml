@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.front
+    container_name: django-front
     volumes:
       - .:/app
     env_file:
@@ -14,6 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.api
+    container_name: django-api
     volumes:
       - .:/app
     env_file:
@@ -24,6 +26,7 @@ services:
 
   db:
     image: postgres:13
+    container_name: django-db
     ports:
       - 5432:5432
     environment:
@@ -43,6 +46,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
