@@ -64,7 +64,7 @@ Il est très fort possible que des erreurs s'affichent lors du lancement du scri
 
 Pour revenir à un site vierge si besoin, alors il suffit de supprimer le volume Docker bindé au container postgresSQL avec la commande suivante :
 ```
-sudo docker volume rm **nomduvolume**
+sudo docker volume rm **postgres_data_v6**
 ```
 ## Structure du projet
 ```
