@@ -122,7 +122,7 @@ sudo docker volume rm **nomduvolume**
 
 ### Fonctionnement de Django
 
-- Vous disposez d'un projet Django dans lequel une application `public` a été créée. Décrivez la suite de requêtes et d'exécutions permettant l'affichage d'une page HTML `index.html` à l'URL global `/` via une application `public`, ne nécessitant pas de contexte de données. Vous décrirez la position exacte dans l'arborescence des répertoires des différents fichiers utiles à cette exécution.
+**- Vous disposez d'un projet Django dans lequel une application `public` a été créée. Décrivez la suite de requêtes et d'exécutions permettant l'affichage d'une page HTML `index.html` à l'URL global `/` via une application `public`, ne nécessitant pas de contexte de données. Vous décrirez la position exacte dans l'arborescence des répertoires des différents fichiers utiles à cette exécution.**
 
 Lorsqu'un utilisateur souhaite accéder à l'URL global '/', Django va réaliser tout un tas d'étapes afin de rendre la page sur le navigateur de l'utilisateur. 
 
@@ -137,11 +137,11 @@ Lorsqu'un utilisateur souhaite accéder à l'URL global '/', Django va réaliser
  
 
 
-- Dans quelle(s) section(s) de quel(s) fichier(s) peut-on configurer la base de données que l'on souhaite utiliser pour un projet Django ?
+**- Dans quelle(s) section(s) de quel(s) fichier(s) peut-on configurer la base de données que l'on souhaite utiliser pour un projet Django ?**
 
 Dans Django, la configuration de la base de données se fait dans la section **DATABASES** du fichier ```settings/base.py``` (dans notre cas, sinon ```settings.py```)
 
-- Dans quel(s) fichier(s) peut-on configurer le fichier de paramètres que l'on souhaite faire utiliser par le projet Django ? Si plusieurs fichers sont à mentionner, expliquez le rôle de chaque fichier.
+**- Dans quel(s) fichier(s) peut-on configurer le fichier de paramètres que l'on souhaite faire utiliser par le projet Django ? Si plusieurs fichers sont à mentionner, expliquez le rôle de chaque fichier.**
 
 Il y a plusieurs possibilités pour définir le fichier de paramètres à utiliser. On peut passer par la variable ```os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")```du fichier ```manage.py```. Ici on définit le fichier par défaut.
 
@@ -151,7 +151,7 @@ Sinon, on peut expliciter le fichier de paramètres à utiliser dans les argumen
 ```python manage.py runserver --settings=voiture.settings.public (--settings=voiture.settings.api)```
 
 
-- Nous nous plaçons à la racine de votre projet Django. Quel effet a l'exécution `python manage.py makemigrations` ? Et l'exécution `python manage.py migrate` ? Quel(s) fichier(s) sont mis en oeuvre pendant ces exécutions ?
+**- Nous nous plaçons à la racine de votre projet Django. Quel effet a l'exécution `python manage.py makemigrations` ? Et l'exécution `python manage.py migrate` ? Quel(s) fichier(s) sont mis en oeuvre pendant ces exécutions ?**
 
 La commande ```makemigrations``` sert à détecter les changements dans les modèles (définis dans le fichier ```api/models.py```) et créer les fichiers de migrations correspondants. Ces fichiers contiennt les instructions nécessaires pour appliquer les changements dans la structure de la base de données. Django va donc créer des fichiers de migrations dans le dossier ```public/migrations```. Chaque modification et lancement de la commande ```makemigrations``` va générer des fichiers de migrations pour chaque application impliquée. Ces fichiers portent des noms comme 0001_initial.py, 0002_auto_20240101.py, etc. Ces fichiers définissent les opérations à effectuer sur la base de données (création de tables, ajout de colonnes, modifications de types, etc.).
 
@@ -161,7 +161,7 @@ La commande ```migrate``` va appliquer les fichiers de migrations crées précé
 
 ### Fonctionnement de Docker
 
-- Expliquez l'effet et la syntaxe de ces commandes, communément vues dans des fichiers `Dockerfile` : `FROM`, `RUN`, `WORKDIR`, `EXPOSE`, `CMD`.
+**- Expliquez l'effet et la syntaxe de ces commandes, communément vues dans des fichiers `Dockerfile` : `FROM`, `RUN`, `WORKDIR`, `EXPOSE`, `CMD`.**
 
 Toutes ces commandes utilisées dans un fichier Dockerfile servent à construire une image Docker. 
 
@@ -175,7 +175,7 @@ La commande ```EXPOSE``` indique le port sur lequel le container va écouter les
 
 La commande ```CMD``` spécifie la commande à lancer au démarrage du container (différent de ```RUN``` qui s'exécute à la création). Dans notre cas, elle sert à lancer le serveur Django.
   
-- Dans la définition d'un service dans le fichier `docker-compose.yml`, expliquez l'effet des mentions :
+**- Dans la définition d'un service dans le fichier `docker-compose.yml`, expliquez l'effet des mentions :**
 
 
 ```
@@ -208,10 +208,10 @@ Ces lignes définissent les variables d'environnement pour le container ```postg
 
 
 
-- Citez une méthode pour définir des variables d'environnement dans un conteneur.
+**- Citez une méthode pour définir des variables d'environnement dans un conteneur.**
 
 Il suffit d'utiliser la directive ```environment``` dans la section du container afin de passer les variables au container.
 
-- Dans un même réseau Docker, nous disposons d'un conteneur `nginx` (utilisant l'image `nginx:latest`) et d'un conteneur `web` (utilisant une image contenant un projet web Django, ayant la commande `python manage.py runserver 0.0.0.0:8000` de lancée au démarrage du conteneur). Comment adresser le serveur web tournant dans le conteneur `web` depuis le conteneur `nginx`, sans utiliser les adresses IP des conteneurs ?
+**- Dans un même réseau Docker, nous disposons d'un conteneur `nginx` (utilisant l'image `nginx:latest`) et d'un conteneur `web` (utilisant une image contenant un projet web Django, ayant la commande `python manage.py runserver 0.0.0.0:8000` de lancée au démarrage du conteneur). Comment adresser le serveur web tournant dans le conteneur `web` depuis le conteneur `nginx`, sans utiliser les adresses IP des conteneurs ?**
 
 Grâce à Docker, il suffit d'utiliser le nom donné au container faisant tourner le serveur web. Cela permet de ne pas être dépendant des adresses IP dans le cas de changements.
