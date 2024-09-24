@@ -1,0 +1,9 @@
+- http://localhost/public : page principale du site web
+- http://localhost/public/reservation : page de réservation d'un véhicule (accessible uniquement lorsque authentifié)
+- http://localhost/public/login : page de connexion
+- http://localhost/public/register : page de création de compte
+- http://localhost/public/logout : page de déconnexion, qui renvoit à la page principale
+- http://localhost/api/voitures : API qui renvoit la liste des voitures
+- http://localhost/api/garages : API qui renvoit la liste des garages
+- http://localhost/api/cles : API qui renvoit la liste des clés
+- http://localhost/admin : Panel admin Django intégré qui permet d'ajouter des voitures, garages, clés et confirmer les réservations
