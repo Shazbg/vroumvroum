@@ -115,6 +115,10 @@ sudo docker volume rm {dossier_courant}postgres_data_v6
 
 <img src="https://github.com/Shazbg/vroumvroum/blob/v6/schema%20rezo.png?raw=true"  alt="Schéma de l'infrastructure réseau">
 
+## Schéma de la base de données
+
+<img src="https://github.com/Shazbg/vroumvroum/blob/v6/database-schema.png?raw=true"  alt="Schéma de la base de données>
+
 ## Réponses aux questions
 
 ### Fonctionnement de Django
