@@ -31,7 +31,7 @@ L'application **api** est une API au format JSON qui renvoit des informations te
 **Il est recommandé d'utiliser un système d'exploitation type Linux.**
 L'installation suivante fonctionne avec Docker et Docker-Compose
 
-1. Dézippez l'archive du projet
+1. Dézippez l'archive du projet 
 ```
 tar xvf CSC8567 - Django et Docker - Shazir Sheik.tar.gz
 ```
