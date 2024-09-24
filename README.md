@@ -216,3 +216,7 @@ Il suffit d'utiliser la directive ```environment``` dans la section du container
 **- Dans un même réseau Docker, nous disposons d'un conteneur `nginx` (utilisant l'image `nginx:latest`) et d'un conteneur `web` (utilisant une image contenant un projet web Django, ayant la commande `python manage.py runserver 0.0.0.0:8000` de lancée au démarrage du conteneur). Comment adresser le serveur web tournant dans le conteneur `web` depuis le conteneur `nginx`, sans utiliser les adresses IP des conteneurs ?**
 
 Grâce à Docker, il suffit d'utiliser le nom donné au container faisant tourner le serveur web. Cela permet de ne pas être dépendant des adresses IP dans le cas de changements.
+
+## Remerciements
+
+Merci à Timothée Mathubert, Gatien Roujanski, Arthur Jovart (et ChatGPT) pour leur aide durant le projet !
